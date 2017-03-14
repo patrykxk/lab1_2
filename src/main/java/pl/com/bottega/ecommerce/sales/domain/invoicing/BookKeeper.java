@@ -17,21 +17,21 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import java.math.BigDecimal;
 import java.util.List;
-
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
+
 
 public class BookKeeper {
 
 	public Invoice issuance(ClientData client, List<RequestItem> items) {
-		Invoice invoice = new Invoice(Id.generate(), client);
+		InvoiceFactory invoiceFactory = new InvoiceFactory();
+		Invoice invoice = invoiceFactory.createInvoice(client);
 
 		for (RequestItem item : items) {
 			Money net = item.getTotalCost();
 			BigDecimal ratio = null;
 			String desc = null;
-			
+
 			switch (item.getProductData().getType()) {
 			case DRUG:
 				ratio = BigDecimal.valueOf(0.05);
@@ -45,15 +45,15 @@ public class BookKeeper {
 				ratio = BigDecimal.valueOf(0.23);
 				desc = "23%";
 				break;
-				
+
 			default:
 				throw new IllegalArgumentException(item.getProductData().getType() + " not handled");
 			}
-					
+
 			Money taxValue = net.multiplyBy(ratio);
-			
+
 			Tax tax = new Tax(taxValue, desc);
-			
+
 
 			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(),
 					item.getQuantity(), net, tax);
