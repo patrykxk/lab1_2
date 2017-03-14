@@ -17,6 +17,7 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import java.math.BigDecimal;
 
+import pl.com.bottega.ecommerce.sales.domain.invoicing.Taxes.Tax;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 
