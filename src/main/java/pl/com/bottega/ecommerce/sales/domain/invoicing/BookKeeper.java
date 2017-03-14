@@ -15,9 +15,7 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
-import java.math.BigDecimal;
-
-import pl.com.bottega.ecommerce.sales.domain.invoicing.Taxes.Tax;
+import pl.com.bottega.ecommerce.sales.domain.invoicing.Taxes.*;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 
@@ -25,34 +23,28 @@ public class BookKeeper {
 	public Invoice issuance(InvoiceRequest invoiceRequest) {
 		InvoiceFactory invoiceFactory = new InvoiceFactory();
 		Invoice invoice = invoiceFactory.createInvoice(invoiceRequest.getClient());
-
+		Context context;
 		for (RequestItem item : invoiceRequest.getItems()) {
 			Money net = item.getTotalCost();
-			BigDecimal ratio = null;
-			String desc = null;
+			Tax tax;
 
 			switch (item.getProductData().getType()) {
 			case DRUG:
-				ratio = BigDecimal.valueOf(0.05);
-				desc = "5% (D)";
+				context = new Context(new TaxDrug());
+				tax = context.executeStrategy(net);
 				break;
 			case FOOD:
-				ratio = BigDecimal.valueOf(0.07);
-				desc = "7% (F)";
+				context = new Context(new TaxFood());
+				tax = context.executeStrategy(net);
 				break;
 			case STANDARD:
-				ratio = BigDecimal.valueOf(0.23);
-				desc = "23%";
+				context = new Context(new TaxStandard());
+				tax = context.executeStrategy(net);
 				break;
 
 			default:
 				throw new IllegalArgumentException(item.getProductData().getType() + " not handled");
 			}
-
-			Money taxValue = net.multiplyBy(ratio);
-
-			Tax tax = new Tax(taxValue, desc);
-
 
 			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(),
 					item.getQuantity(), net, tax);
