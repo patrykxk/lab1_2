@@ -25,17 +25,11 @@ import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Purchase {
-
 	private List<PurchaseItem> items;
-
 	private boolean paid;
-
 	private ClientData clientData;
-
 	private Date purchaseDate;
-
 	private Money totalCost;
-
 	private Id aggregateId;
 
 	@SuppressWarnings("unused")

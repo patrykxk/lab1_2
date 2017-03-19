@@ -18,11 +18,11 @@ public class InvoiceRequest {
 	public void add(RequestItem item){
 		items.add(item);
 	}
-	
+
 	public ClientData getClient() {
 		return client;
 	}
-	
+
 	public Collection<RequestItem> getItems() {
 		return Collections.unmodifiableCollection(items);
 	}

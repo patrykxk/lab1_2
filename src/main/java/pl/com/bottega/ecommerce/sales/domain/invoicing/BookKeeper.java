@@ -18,7 +18,6 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 import pl.com.bottega.ecommerce.sales.domain.invoicing.Taxes.*;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
-
 public class BookKeeper {
 	public Invoice issuance(InvoiceRequest invoiceRequest) {
 		InvoiceFactory invoiceFactory = new InvoiceFactory();

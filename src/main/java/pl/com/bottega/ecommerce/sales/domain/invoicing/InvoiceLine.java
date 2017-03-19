@@ -23,15 +23,10 @@ import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class InvoiceLine {
-
 	private ProductData product;
-
 	private int quantity;
-
 	private Money net;
-
 	private Money gros;
-
 	private Tax tax;
 
 	InvoiceLine(ProductData product, int quantity, Money net, Tax tax) {
@@ -46,19 +41,15 @@ public class InvoiceLine {
 	public ProductData getProduct() {
 		return product;
 	}
-
 	public int getQuantity() {
 		return quantity;
 	}
-
 	public Money getNet() {
 		return net;
 	}
-
 	public Money getGros() {
 		return gros;
 	}
-
 	public Tax getTax() {
 		return tax;
 	}

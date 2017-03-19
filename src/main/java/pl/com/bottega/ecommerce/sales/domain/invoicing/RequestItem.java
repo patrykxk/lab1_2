@@ -19,11 +19,8 @@ import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 class RequestItem {
-
 	private ProductData productData;
-
 	private int quantity;
-
 	private Money totalCost;
 
 	public RequestItem(ProductData productData, int quantity, Money totalCost) {

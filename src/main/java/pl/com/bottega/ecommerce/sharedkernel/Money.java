@@ -23,11 +23,8 @@ import org.fest.util.Objects;
 
 public class Money {
 	public static final Currency DEFAULT_CURRENCY = Currency.getInstance("EUR");
-
 	public static final Money ZERO = new Money(BigDecimal.ZERO);
-
 	private BigDecimal denomination;
-
 	private String currencyCode;
 
 	protected Money() {

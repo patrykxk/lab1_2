@@ -25,13 +25,9 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 public class ProductData {
 	private Id productId;
 	private Money price;
-	
 	private String name;
-	
 	private Date snapshotDate;
-		
 	private ProductType type;
-
 	
 	@SuppressWarnings("unused")
 	private ProductData(){}
