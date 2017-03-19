@@ -18,9 +18,7 @@ package pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage;
 
 
 public class ClientData {
-	
 	private Id aggregateId;
-	
 	private String name;
 
 	@SuppressWarnings("unused")

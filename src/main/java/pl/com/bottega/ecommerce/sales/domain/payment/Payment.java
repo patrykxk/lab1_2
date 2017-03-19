@@ -20,13 +20,9 @@ import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Payment {
-
 	private ClientData clientData;
-
 	private Money amount;
-
 	private Id aggregateId;
-
 
 	public Payment(Id aggregateId, ClientData clientData, Money amount) {
 		this.aggregateId = aggregateId;
